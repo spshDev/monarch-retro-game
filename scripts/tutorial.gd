@@ -24,7 +24,8 @@ func _on_button_hover(): # HoverState
 	tween.tween_property(back_button, "scale", Vector2(2.5, 2.5), 0.1).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(back_button, "modulate", Color(1.5, 1.5, 1.5, 1), 0.1).set_trans(Tween.TRANS_SINE)  # Light glow
 	back_button.pivot_offset = back_button.size / 2  # **Reapply pivot after scaling**
-	blip_hover.play() # SoundEffect
+	if Global.sfx == true:
+		blip_hover.play() # SoundEffect
 
 func _on_button_exit(): # ExitState
 	var tween = back_button.create_tween()
@@ -33,7 +34,8 @@ func _on_button_exit(): # ExitState
 	back_button.pivot_offset = back_button.size / 2  # **Ensure pivot stays centered**
 
 func _on_back_pressed(): # PressedState
-	click.play()
+	if Global.sfx == true:
+		click.play()
 	var tween = back_button.create_tween()
 	tween.tween_property(back_button, "scale", Vector2(1.9, 1.9), 0.05).set_trans(Tween.TRANS_QUAD)  # Snappy press effect
 	tween.tween_property(back_button, "modulate", Color(0.8, 0.8, 0.8, 1), 0.05).set_trans(Tween.TRANS_QUAD)  # Slight darkening

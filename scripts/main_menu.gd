@@ -34,7 +34,8 @@ func _on_button_hover(button): # HoverState
 	tween.tween_property(button, "scale", Vector2(1.1, 1.1), 0.1).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(button, "modulate", Color(1.4, 1.4, 1.4, 1), 0.1).set_trans(Tween.TRANS_SINE) # Slight glow
 	button.add_theme_color_override("font_color", Color(1, 1, 0.8))  # Light yellowish glow
-	blip_hover.play() # Sound Effect
+	if Global.sfx == true:
+		blip_hover.play() # Sound Effect
 
 func _on_button_exit(button): # ExitState
 	var tween = button.create_tween()
@@ -53,16 +54,19 @@ func _on_button_pressed(button, scene_path): # PressedState
 	get_tree().change_scene_to_file(scene_path)
 
 func _on_play_pressed():
-	click.play()
+	if Global.sfx == true:
+		click.play()
 	_on_button_pressed(play_button, "res://scenes/map.tscn")
 	
 func _on_tutorial_pressed():
-	click.play()
+	if Global.sfx == true:
+		click.play()
 	_on_button_pressed(tutorial_button, "res://scenes/tutorial.tscn")
 	
 
 func _on_quit_pressed():
-	click.play()
+	if Global.sfx == true:
+		click.play()
 	_on_button_pressed(quit_button, "")  # No scene, so just quit
 	await get_tree().create_timer(0.15).timeout
 	get_tree().quit()

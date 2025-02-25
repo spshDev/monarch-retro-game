@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ddtcw0dh3g17d"]
+[gd_scene load_steps=25 format=3 uid="uid://ddtcw0dh3g17d"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_4v0ge"]
 [ext_resource type="AudioStream" uid="uid://cq6fbyuvo2x40" path="res://assets/SoundEffects/click.wav" id="2_7c7x7"]
@@ -13,6 +13,9 @@
 [ext_resource type="Shader" path="res://shaders/CRT.gdshader" id="10_aasgb"]
 [ext_resource type="Texture2D" uid="uid://uivv7c5kf3fj" path="res://assets/Tiles/Large tiles/Thick outline/tile_0056.png" id="10_vn0p4"]
 [ext_resource type="Environment" uid="uid://dxd434xxnhox3" path="res://shaders/env.tres" id="11_lxdvm"]
+[ext_resource type="Script" path="res://scripts/audio_ui.gd" id="14_w22l8"]
+[ext_resource type="Texture2D" uid="uid://bid3tybsd7w5i" path="res://assets/audioOn.png" id="15_1kiho"]
+[ext_resource type="Texture2D" uid="uid://bgu8eay04hrt8" path="res://assets/musicOn.png" id="16_khlki"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p4gyl"]
 texture = ExtResource("2_37uhq")
@@ -29,6 +32,10 @@ shader = ExtResource("10_aasgb")
 [sub_resource type="QuadMesh" id="QuadMesh_lpa0c"]
 size = Vector2(720, 720)
 center_offset = Vector3(360, 360, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mhh0n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xyjdy"]
 
 [node name="Main Menu" type="Control"]
 texture_filter = 1
@@ -219,6 +226,45 @@ mesh = SubResource("QuadMesh_lpa0c")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("11_lxdvm")
 
+[node name="audioUI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 929.0
+offset_top = 1408.0
+offset_right = 209.0
+offset_bottom = 688.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_w22l8")
+
+[node name="sfx" type="Button" parent="audioUI"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -345.0
+offset_top = -1228.0
+offset_right = -237.0
+offset_bottom = -1120.0
+scale = Vector2(0.5, 0.5)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mhh0n")
+icon = ExtResource("15_1kiho")
+flat = true
+
+[node name="Music" type="Button" parent="audioUI"]
+modulate = Color(0.878431, 0.878431, 0.878431, 1)
+layout_mode = 0
+offset_left = -899.0
+offset_top = -1228.0
+offset_right = -791.0
+offset_bottom = -1120.0
+scale = Vector2(0.5, 0.5)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xyjdy")
+icon = ExtResource("16_khlki")
+flat = true
+
 [connection signal="pressed" from="UI/Buttons/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="UI/Buttons/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="UI/Buttons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="audioUI/sfx" to="audioUI" method="_on_sfx_pressed"]
+[connection signal="pressed" from="audioUI/Music" to="audioUI" method="_on_music_pressed"]

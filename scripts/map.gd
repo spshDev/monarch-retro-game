@@ -5,7 +5,7 @@ extends Node2D
 var renewTime = 2
 
 # Sound Effects
-@onready var blip_hover: AudioStreamPlayer = $blipHover
+@onready var blip_hover: AudioStreamPlayer2D = $blipHover
 @onready var blip_buzzer: AudioStreamPlayer2D = $blipBuzzer
 @onready var click: AudioStreamPlayer2D = $Click
 @onready var screen_shake: AudioStreamPlayer2D = $screenShake
@@ -174,7 +174,8 @@ func _on_button_hover(button):
 	var tween = button.create_tween()
 	tween.tween_property(button, "scale", HOVER_SCALE, 0.1).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(button, "modulate", Color(1.4, 1.4, 1.4, 1), 0.1).set_trans(Tween.TRANS_SINE)
-	blip_hover.play()
+	if Global.sfx == true:
+		blip_hover.play()
 
 func _on_button_exit(button):
 	var tween = button.create_tween()
@@ -191,7 +192,8 @@ func _on_button_pressed(button):
 
 # Light effect for clicker buttons
 func _on_light_hover(light):
-	blip_hover.play()
+	if Global.sfx == true:
+		blip_hover.play()
 	light.visible = true
 
 func _on_light_exit(light):
@@ -205,7 +207,8 @@ func _on_score_timer_timeout() -> void:
 # CLICKER MECHANICS
 func _on_ration_pressed() -> void:
 	if famine == false:
-		click.play()
+		if Global.sfx == true:
+			click.play()
 		ration_timer.start()
 	
 		# PLAY ANIMATION
@@ -218,7 +221,8 @@ func _on_ration_pressed() -> void:
 	
 func _on_military_pressed() -> void:
 	if war == false:
-		click.play()
+		if Global.sfx == true:
+			click.play()
 		military_timer.start()
 	
 		# PLAY ANIMATION
@@ -232,7 +236,8 @@ func _on_military_pressed() -> void:
 	
 func _on_church_pressed() -> void:
 	if revolt == false:
-		click.play()
+		if Global.sfx == true:
+			click.play()
 		church_timer.start()
 	
 		# PLAY ANIMATION
@@ -253,6 +258,9 @@ func _on_church_timer_timeout() -> void:
 		church_wait.stop()
 	
 		church.disabled = false
+	
+	else:
+		blip_buzzer.play()		
 
 
 func _on_ration_timer_timeout() -> void:
@@ -265,6 +273,9 @@ func _on_ration_timer_timeout() -> void:
 	
 	
 		ration.disabled = false
+		
+	else:
+		blip_buzzer.play()
 
 func _on_military_timer_timeout() -> void:
 	if war == false:
@@ -284,7 +295,8 @@ func _on_food_pressed():
 		if food > 0:
 			hunger_timer.start(hunger_timer.time_left + renewTime)
 			food -= 1
-			click.play()
+			if Global.sfx == true:
+				click.play()
 
 		else:
 			blip_buzzer.play() # NONE
@@ -297,7 +309,9 @@ func _on_army_pressed():
 		if army > 0:
 			defense_timer.start(defense_timer.time_left + renewTime)
 			army -= 1
-			click.play()
+			if Global.sfx == true:
+				click.play()
+
 		else:
 			blip_buzzer.play() # NONE
 	else:
@@ -309,7 +323,9 @@ func _on_religion_pressed():
 		if religion > 0:
 			manipulation_timer.start(manipulation_timer.time_left + renewTime)
 			religion -= 1
-			click.play()
+			if Global.sfx == true:
+				click.play()
+
 		else:
 			blip_buzzer.play() # NONE
 	else:
@@ -352,7 +368,8 @@ func _on_manipulation_timer_timeout() -> void:
 
 # Apply visual effects when a disaster occurs
 func apply_disaster_effects():
-	screen_shake.play() # SCREEN SHAKE EFFECT
+	if Global.sfx == true:
+		screen_shake.play() # SCREEN SHAKE SOUND
 	if famine and war and revolt:
 		game_over()
 

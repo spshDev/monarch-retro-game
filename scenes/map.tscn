@@ -175,7 +175,7 @@ pitch_scale = 0.5
 stream = ExtResource("2_nl82v")
 volume_db = 10.0
 
-[node name="blipHover" type="AudioStreamPlayer" parent="."]
+[node name="blipHover" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_t82v0")
 volume_db = -5.0
 
@@ -189,7 +189,7 @@ environment = ExtResource("2_wrmkq")
 
 [node name="Worldmap" type="Sprite2D" parent="."]
 texture_filter = 4
-position = Vector2(360.5, 363.505)
+position = Vector2(360.5, 358.505)
 scale = Vector2(0.52832, 0.529329)
 texture = ExtResource("1_4heg4")
 metadata/_edit_lock_ = true

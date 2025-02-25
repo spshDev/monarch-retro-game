@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Bgm="*res://scenes/bgm.tscn"
 MainCamera="*res://scenes/main_camera.tscn"
 SaveLoad="*res://scripts/save_load.gd"
+Global="*res://scripts/Global.gd"
 
 [display]
 

@@ -4,7 +4,7 @@ extends Area2D
 @export var glow_color: Color = Color(1.4, 1.4, 1.4, 1)  # Slight glow effect
 @export var grow_scale: float = 1.15  # Scale multiplier on hover
 @export var hover_duration: float = 0.15  # Tween duration
-@onready var blip_hover: AudioStreamPlayer = $"../../blipHover"
+@onready var blip_hover: AudioStreamPlayer2D = $"../../blipHover"
 
 var original_color: Color
 var original_scale: Vector2
