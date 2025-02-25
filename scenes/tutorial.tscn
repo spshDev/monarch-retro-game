@@ -1,0 +1,600 @@
+[gd_scene load_steps=24 format=3 uid="uid://bmh788cn1qr3q"]
+
+[ext_resource type="Texture2D" uid="uid://cwakihwec58eo" path="res://assets/Textures/parchmentAncient.png" id="1_6q2j0"]
+[ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_jkru7"]
+[ext_resource type="Texture2D" uid="uid://cwle5r6jnshg5" path="res://assets/PNG/arrowBrown_left.png" id="2_0jpnd"]
+[ext_resource type="AudioStream" uid="uid://cq6fbyuvo2x40" path="res://assets/SoundEffects/click.wav" id="2_5gakj"]
+[ext_resource type="Environment" uid="uid://dxd434xxnhox3" path="res://shaders/env.tres" id="2_n6em2"]
+[ext_resource type="Shader" path="res://shaders/CRT.gdshader" id="3_twrnj"]
+[ext_resource type="Texture2D" uid="uid://s663cekwyw07" path="res://assets/circle bars/32x32/32x32 circle bar under.png" id="4_r5ct0"]
+[ext_resource type="Texture2D" uid="uid://dexm2oylerpyd" path="res://assets/circle bars/32x32/32x32 circle bar over.png" id="5_5tf2c"]
+[ext_resource type="Texture2D" uid="uid://bwb2be5vds74f" path="res://assets/circle bars/32x32/32x32 circle bar progress light brown.png" id="6_dbh28"]
+[ext_resource type="FontFile" uid="uid://dqctqmm7abhud" path="res://assets/FONTS/PressStart2P-Regular.ttf" id="7_7e52k"]
+[ext_resource type="Texture2D" uid="uid://c0ou2wfo2d1oc" path="res://assets/bag.png" id="8_fy28k"]
+[ext_resource type="Texture2D" uid="uid://cwnr6odsndw81" path="res://assets/bread.png" id="9_7uc2x"]
+[ext_resource type="Texture2D" uid="uid://dg2f61a68drrb" path="res://assets/sword.png" id="10_t51md"]
+[ext_resource type="Texture2D" uid="uid://dsi0c3sqpbvkp" path="res://assets/heart.png" id="11_5ktlm"]
+[ext_resource type="Texture2D" uid="uid://cfbkyjxuwdf05" path="res://assets/army.jpg" id="12_k4qd6"]
+[ext_resource type="Texture2D" uid="uid://dx4up0o5nfvj0" path="res://assets/church.jpg" id="13_yg21v"]
+[ext_resource type="Texture2D" uid="uid://c4osi1054ml7p" path="res://assets/mill.jpg" id="14_mfyb8"]
+[ext_resource type="Texture2D" uid="uid://b12xpci7ljyd3" path="res://assets/skull.png" id="15_2xcwa"]
+[ext_resource type="AudioStream" uid="uid://cjfuh65ehi40c" path="res://assets/SoundEffects/blipHover.wav" id="18_8kieq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ifkuy"]
+shader = ExtResource("3_twrnj")
+
+[sub_resource type="QuadMesh" id="QuadMesh_g6def"]
+size = Vector2(760, 760)
+center_offset = Vector3(360, 360, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_35dpq"]
+texture = ExtResource("1_6q2j0")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7mqo7"]
+
+[node name="Tutorial" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jkru7")
+metadata/_edit_lock_ = true
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(104, 112)
+stream = ExtResource("2_5gakj")
+volume_db = 6.0
+
+[node name="blipHover" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(71, 671)
+stream = ExtResource("18_8kieq")
+volume_db = 2.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_n6em2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_ifkuy")
+mesh = SubResource("QuadMesh_g6def")
+
+[node name="Bg" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 720.0
+offset_bottom = 720.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_35dpq")
+
+[node name="Back" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 41.0
+offset_top = 640.0
+offset_right = 71.0
+offset_bottom = 669.0
+scale = Vector2(2, 2)
+theme_override_icons/icon = ExtResource("2_0jpnd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7mqo7")
+flat = true
+
+[node name="Scores" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 81.0
+offset_top = 144.0
+offset_right = 121.0
+offset_bottom = 184.0
+scale = Vector2(0.6, 0.6)
+
+[node name="FOOD" type="Sprite2D" parent="Scores"]
+texture_filter = 1
+position = Vector2(358.333, -86.6667)
+scale = Vector2(3.9, 3.9)
+texture = ExtResource("8_fy28k")
+
+[node name="BREAD" type="Sprite2D" parent="Scores/FOOD"]
+texture_filter = 1
+position = Vector2(-0.333331, -0.666667)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("9_7uc2x")
+
+[node name="ARMY" type="Sprite2D" parent="Scores"]
+texture_filter = 1
+position = Vector2(359.067, 167.067)
+scale = Vector2(3.9, 3.9)
+texture = ExtResource("8_fy28k")
+
+[node name="CursorSwordGold" type="Sprite2D" parent="Scores/ARMY"]
+texture_filter = 1
+position = Vector2(1.90735e-06, 1.66667)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_t51md")
+
+[node name="RELIGION" type="Sprite2D" parent="Scores"]
+texture_filter = 1
+position = Vector2(359.067, 411.4)
+scale = Vector2(3.9, 3.9)
+texture = ExtResource("8_fy28k")
+
+[node name="Heart" type="Sprite2D" parent="Scores/RELIGION"]
+texture_filter = 1
+position = Vector2(-3.8147e-06, 0.333334)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_5ktlm")
+
+[node name="Bars" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 464.0
+offset_top = 42.0
+offset_right = 504.0
+offset_bottom = 82.0
+scale = Vector2(0.6, 0.6)
+
+[node name="HungerBar" type="TextureProgressBar" parent="Bars"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -50.0
+offset_top = 23.3333
+offset_right = -18.0
+offset_bottom = 55.3333
+scale = Vector2(4, 4)
+value = 75.0
+fill_mode = 5
+texture_under = ExtResource("4_r5ct0")
+texture_over = ExtResource("5_5tf2c")
+texture_progress = ExtResource("6_dbh28")
+
+[node name="DefenseBar" type="TextureProgressBar" parent="Bars"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -46.6666
+offset_top = 276.667
+offset_right = -14.6666
+offset_bottom = 308.667
+scale = Vector2(4, 4)
+value = 30.0
+fill_mode = 5
+texture_under = ExtResource("4_r5ct0")
+texture_over = ExtResource("5_5tf2c")
+texture_progress = ExtResource("6_dbh28")
+
+[node name="ManipulationBar" type="TextureProgressBar" parent="Bars"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -48.3333
+offset_top = 516.667
+offset_right = -16.3333
+offset_bottom = 548.667
+scale = Vector2(4, 4)
+value = 56.0
+fill_mode = 5
+stretch_margin_left = 10
+texture_under = ExtResource("4_r5ct0")
+texture_over = ExtResource("5_5tf2c")
+texture_progress = ExtResource("6_dbh28")
+
+[node name="FamineTimerLabel" type="Label" parent="Bars"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -47.0
+offset_top = 81.3333
+offset_right = 49.0
+offset_bottom = 97.3333
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_color = Color(0.984314, 0.854902, 0.654902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("7_7e52k")
+text = "FAMINE"
+
+[node name="AttackTimerLabel" type="Label" parent="Bars"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -13.6667
+offset_top = 332.667
+offset_right = 34.3333
+offset_bottom = 348.667
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_color = Color(0.984314, 0.854902, 0.654902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("7_7e52k")
+text = "WAR
+"
+
+[node name="RevoltTimerLabel" type="Label" parent="Bars"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -45.3333
+offset_top = 573.667
+offset_right = 50.6667
+offset_bottom = 589.667
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_color = Color(0.984314, 0.854902, 0.654902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("7_7e52k")
+text = "REVOLT"
+
+[node name="FullBarHunger" type="TextureProgressBar" parent="Bars"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 258.333
+offset_top = 23.3333
+offset_right = 290.333
+offset_bottom = 55.3333
+scale = Vector2(4, 4)
+value = 100.0
+fill_mode = 5
+texture_under = ExtResource("4_r5ct0")
+texture_over = ExtResource("5_5tf2c")
+texture_progress = ExtResource("6_dbh28")
+
+[node name="FullBarDefense" type="TextureProgressBar" parent="Bars"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 260.0
+offset_top = 276.667
+offset_right = 292.0
+offset_bottom = 308.667
+scale = Vector2(4, 4)
+value = 100.0
+fill_mode = 5
+texture_under = ExtResource("4_r5ct0")
+texture_over = ExtResource("5_5tf2c")
+texture_progress = ExtResource("6_dbh28")
+
+[node name="FullBarManipulation" type="TextureProgressBar" parent="Bars"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 260.0
+offset_top = 517.0
+offset_right = 292.0
+offset_bottom = 549.0
+scale = Vector2(4, 4)
+value = 100.0
+fill_mode = 5
+stretch_margin_left = 10
+texture_under = ExtResource("4_r5ct0")
+texture_over = ExtResource("5_5tf2c")
+texture_progress = ExtResource("6_dbh28")
+
+[node name="FamineTimerLabel2" type="Label" parent="Bars"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 261.333
+offset_top = 81.3333
+offset_right = 357.333
+offset_bottom = 97.3333
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_color = Color(0.984314, 0.854902, 0.654902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("7_7e52k")
+text = "FAMINE"
+
+[node name="AttackTimerLabel2" type="Label" parent="Bars"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 293.0
+offset_top = 332.667
+offset_right = 341.0
+offset_bottom = 348.667
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_color = Color(0.984314, 0.854902, 0.654902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("7_7e52k")
+text = "WAR
+"
+
+[node name="RevoltTimerLabel2" type="Label" parent="Bars"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 263.0
+offset_top = 574.0
+offset_right = 359.0
+offset_bottom = 590.0
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_color = Color(0.984314, 0.854902, 0.654902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("7_7e52k")
+text = "REVOLT"
+
+[node name="EmptyBarHunger" type="TextureProgressBar" parent="Bars"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -593.334
+offset_top = 703.333
+offset_right = -561.334
+offset_bottom = 735.333
+scale = Vector2(4, 4)
+fill_mode = 5
+texture_under = ExtResource("4_r5ct0")
+texture_over = ExtResource("5_5tf2c")
+texture_progress = ExtResource("6_dbh28")
+
+[node name="EmptyBarDefense" type="TextureProgressBar" parent="Bars"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -593.334
+offset_top = 836.667
+offset_right = -561.334
+offset_bottom = 868.667
+scale = Vector2(4, 4)
+fill_mode = 5
+texture_under = ExtResource("4_r5ct0")
+texture_over = ExtResource("5_5tf2c")
+texture_progress = ExtResource("6_dbh28")
+
+[node name="EmptyBarManipulation" type="TextureProgressBar" parent="Bars"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -593.334
+offset_top = 970.0
+offset_right = -561.334
+offset_bottom = 1002.0
+scale = Vector2(4, 4)
+fill_mode = 5
+stretch_margin_left = 10
+texture_under = ExtResource("4_r5ct0")
+texture_over = ExtResource("5_5tf2c")
+texture_progress = ExtResource("6_dbh28")
+
+[node name="FamineTimerLabel3" type="Label" parent="Bars"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -590.334
+offset_top = 761.333
+offset_right = -494.334
+offset_bottom = 777.333
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_color = Color(0.984314, 0.854902, 0.654902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("7_7e52k")
+text = "FAMINE"
+
+[node name="AttackTimerLabel3" type="Label" parent="Bars"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -560.334
+offset_top = 892.667
+offset_right = -512.334
+offset_bottom = 908.667
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_color = Color(0.984314, 0.854902, 0.654902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("7_7e52k")
+text = "WAR
+"
+
+[node name="RevoltTimerLabel3" type="Label" parent="Bars"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -590.334
+offset_top = 1027.0
+offset_right = -494.334
+offset_bottom = 1043.0
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_color = Color(0.984314, 0.854902, 0.654902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("7_7e52k")
+text = "REVOLT"
+
+[node name="EqualsTo" type="Label" parent="."]
+layout_mode = 0
+offset_left = 554.0
+offset_top = 80.0
+offset_right = 586.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(0.921569, 0.921569, 0.921569, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("7_7e52k")
+theme_override_font_sizes/font_size = 32
+text = "="
+
+[node name="EqualsTo2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 554.0
+offset_top = 376.0
+offset_right = 586.0
+offset_bottom = 408.0
+theme_override_colors/font_color = Color(0.921569, 0.921569, 0.921569, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("7_7e52k")
+theme_override_font_sizes/font_size = 32
+text = "="
+
+[node name="EqualsTo3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 554.0
+offset_top = 235.0
+offset_right = 586.0
+offset_bottom = 267.0
+theme_override_colors/font_color = Color(0.921569, 0.921569, 0.921569, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("7_7e52k")
+theme_override_font_sizes/font_size = 32
+text = "="
+
+[node name="Sum" type="Label" parent="."]
+layout_mode = 0
+offset_left = 371.0
+offset_top = 81.0
+offset_right = 403.0
+offset_bottom = 113.0
+theme_override_colors/font_color = Color(0.921569, 0.921569, 0.921569, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("7_7e52k")
+theme_override_font_sizes/font_size = 32
+text = "+"
+
+[node name="Sum2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 371.0
+offset_top = 233.0
+offset_right = 403.0
+offset_bottom = 265.0
+theme_override_colors/font_color = Color(0.921569, 0.921569, 0.921569, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("7_7e52k")
+theme_override_font_sizes/font_size = 32
+text = "+"
+
+[node name="Sum3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 371.0
+offset_top = 377.0
+offset_right = 403.0
+offset_bottom = 409.0
+theme_override_colors/font_color = Color(0.921569, 0.921569, 0.921569, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("7_7e52k")
+theme_override_font_sizes/font_size = 32
+text = "+"
+
+[node name="Mill" type="Sprite2D" parent="."]
+position = Vector2(128, 88)
+scale = Vector2(0.499561, 0.499561)
+texture = ExtResource("14_mfyb8")
+
+[node name="Church" type="Sprite2D" parent="."]
+position = Vector2(128, 392)
+scale = Vector2(0.683121, 0.683121)
+texture = ExtResource("13_yg21v")
+
+[node name="Army" type="Sprite2D" parent="."]
+position = Vector2(128, 248)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_k4qd6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 488.0
+offset_right = 536.0
+offset_bottom = 511.0
+scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(0.921569, 0.921569, 0.921569, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("7_7e52k")
+text = "=======>"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 568.0
+offset_right = 536.0
+offset_bottom = 591.0
+scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(0.921569, 0.921569, 0.921569, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("7_7e52k")
+text = "=======>"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 648.0
+offset_right = 537.0
+offset_bottom = 671.0
+scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(0.921569, 0.921569, 0.921569, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("7_7e52k")
+text = "=======>"
+
+[node name="Skull" type="Sprite2D" parent="."]
+modulate = Color(1, 0.74902, 0.419608, 1)
+position = Vector2(564, 576)
+scale = Vector2(4.925, 4.925)
+texture = ExtResource("15_2xcwa")
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

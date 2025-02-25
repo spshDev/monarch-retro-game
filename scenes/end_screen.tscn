@@ -1,0 +1,160 @@
+[gd_scene load_steps=18 format=3 uid="uid://dohy0oxub7tb4"]
+
+[ext_resource type="Script" path="res://scripts/end_screen.gd" id="1_jos8v"]
+[ext_resource type="Shader" path="res://shaders/CRT.gdshader" id="1_nmm3o"]
+[ext_resource type="Environment" uid="uid://dxd434xxnhox3" path="res://shaders/env.tres" id="2_6s00b"]
+[ext_resource type="AudioStream" uid="uid://cq6fbyuvo2x40" path="res://assets/SoundEffects/click.wav" id="2_74by4"]
+[ext_resource type="AudioStream" uid="uid://cjfuh65ehi40c" path="res://assets/SoundEffects/blipHover.wav" id="3_gvyni"]
+[ext_resource type="Texture2D" uid="uid://d36a6ph0yns34" path="res://assets/Textures/parchmentFolded.png" id="3_s3u50"]
+[ext_resource type="Texture2D" uid="uid://bfatkl0fumt7v" path="res://assets/border2.png" id="4_kwn7t"]
+[ext_resource type="FontFile" uid="uid://dqctqmm7abhud" path="res://assets/FONTS/PressStart2P-Regular.ttf" id="5_qkmno"]
+[ext_resource type="Texture2D" uid="uid://drhk1nwlnh8qc" path="res://assets/return.png" id="9_ivcr8"]
+[ext_resource type="Texture2D" uid="uid://bs4qjk5iuy2jj" path="res://assets/home.png" id="10_kei35"]
+[ext_resource type="Texture2D" uid="uid://btcfeub1xcfk4" path="res://assets/cross.png" id="11_joe62"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wgp6j"]
+shader = ExtResource("1_nmm3o")
+
+[sub_resource type="QuadMesh" id="QuadMesh_kxpa7"]
+size = Vector2(720, 720)
+center_offset = Vector3(360, 360, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uefwv"]
+texture = ExtResource("3_s3u50")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5jfb8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i3ou1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ywa7k"]
+
+[node name="EndScreen" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jos8v")
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(104, 112)
+stream = ExtResource("2_74by4")
+volume_db = 6.0
+
+[node name="blipHover" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(71, 671)
+stream = ExtResource("3_gvyni")
+volume_db = 2.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_wgp6j")
+mesh = SubResource("QuadMesh_kxpa7")
+metadata/_edit_lock_ = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_6s00b")
+
+[node name="Bg" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 720.0
+offset_bottom = 720.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_uefwv")
+metadata/_edit_lock_ = true
+
+[node name="Border" type="Sprite2D" parent="."]
+position = Vector2(360, 360)
+scale = Vector2(23.93, 23.96)
+texture = ExtResource("4_kwn7t")
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 323.0
+offset_right = 177.0
+offset_bottom = 339.0
+scale = Vector2(4.6, 4.6)
+theme_override_colors/font_color = Color(0.65834, 0.65834, 0.65834, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("5_qkmno")
+text = "GAME OVER"
+
+[node name="Highscore" type="Label" parent="."]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 129.0
+offset_right = 328.0
+offset_bottom = 145.0
+pivot_offset = Vector2(8, 16)
+theme_override_colors/font_color = Color(0.667449, 0.826384, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("5_qkmno")
+text = "BEST: 10000YRS"
+
+[node name="CurrentScore" type="Label" parent="."]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 103.0
+offset_right = 343.0
+offset_bottom = 123.0
+theme_override_colors/font_color = Color(0.666667, 0.827451, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("5_qkmno")
+text = "SCORE: 10000YRS"
+
+[node name="ReplayButton" type="Button" parent="."]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+layout_mode = 0
+offset_left = 181.0
+offset_top = 480.0
+offset_right = 289.0
+offset_bottom = 588.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5jfb8")
+icon = ExtResource("9_ivcr8")
+flat = true
+
+[node name="MenuButton" type="Button" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 304.0
+offset_top = 480.0
+offset_right = 412.0
+offset_bottom = 588.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_i3ou1")
+icon = ExtResource("10_kei35")
+flat = true
+
+[node name="ExitButton" type="Button" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 416.0
+offset_top = 480.0
+offset_right = 524.0
+offset_bottom = 588.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ywa7k")
+icon = ExtResource("11_joe62")
+flat = true
+
+[connection signal="pressed" from="ReplayButton" to="." method="_on_replay_button_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

@@ -1,0 +1,590 @@
+[gd_scene load_steps=44 format=3 uid="uid://x2p0jggh8gqg"]
+
+[ext_resource type="Texture2D" uid="uid://duksi5wtvhfdm" path="res://assets/worldmap.png" id="1_4heg4"]
+[ext_resource type="Script" path="res://scripts/map.gd" id="1_iwj0i"]
+[ext_resource type="PackedScene" uid="uid://cbldo6c0qu0xt" path="res://scenes/main_camera.tscn" id="2_caocf"]
+[ext_resource type="AudioStream" uid="uid://brks33aycd035" path="res://assets/SoundEffects/blipBuzzer.wav" id="2_nl82v"]
+[ext_resource type="Environment" uid="uid://dxd434xxnhox3" path="res://shaders/env.tres" id="2_wrmkq"]
+[ext_resource type="Texture2D" uid="uid://bfatkl0fumt7v" path="res://assets/border2.png" id="3_gmvwd"]
+[ext_resource type="Shader" path="res://shaders/CRT.gdshader" id="4_od8cd"]
+[ext_resource type="AudioStream" uid="uid://cq6fbyuvo2x40" path="res://assets/SoundEffects/click.wav" id="4_rbfkr"]
+[ext_resource type="Texture2D" uid="uid://c0ou2wfo2d1oc" path="res://assets/bag.png" id="5_4p00u"]
+[ext_resource type="Script" path="res://scripts/ScoreHover.gd" id="5_kku0w"]
+[ext_resource type="FontFile" uid="uid://dqctqmm7abhud" path="res://assets/FONTS/PressStart2P-Regular.ttf" id="5_nq3mo"]
+[ext_resource type="Texture2D" uid="uid://dg2f61a68drrb" path="res://assets/sword.png" id="6_0rsas"]
+[ext_resource type="Texture2D" uid="uid://dsi0c3sqpbvkp" path="res://assets/heart.png" id="6_1ak3r"]
+[ext_resource type="Texture2D" uid="uid://cwnr6odsndw81" path="res://assets/bread.png" id="11_1reka"]
+[ext_resource type="Texture2D" uid="uid://b12xpci7ljyd3" path="res://assets/skull.png" id="12_6ir2s"]
+[ext_resource type="Texture2D" uid="uid://drlkgw3cdg8o0" path="res://assets/FREE Textures Of Light/32x32 textures (19).png" id="12_tpmup"]
+[ext_resource type="Texture2D" uid="uid://cxjfda4ru2xwm" path="res://assets/hourglass (1).png" id="15_mmk25"]
+[ext_resource type="AudioStream" uid="uid://cjfuh65ehi40c" path="res://assets/SoundEffects/blipHover.wav" id="16_t82v0"]
+[ext_resource type="Texture2D" uid="uid://s663cekwyw07" path="res://assets/circle bars/32x32/32x32 circle bar under.png" id="18_67t1j"]
+[ext_resource type="Texture2D" uid="uid://dexm2oylerpyd" path="res://assets/circle bars/32x32/32x32 circle bar over.png" id="19_y4578"]
+[ext_resource type="Texture2D" uid="uid://bwb2be5vds74f" path="res://assets/circle bars/32x32/32x32 circle bar progress light brown.png" id="21_dba0v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y7d0f"]
+shader = ExtResource("4_od8cd")
+
+[sub_resource type="QuadMesh" id="QuadMesh_rpuws"]
+size = Vector2(720, 720)
+center_offset = Vector3(360, 360, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ni3vx"]
+size = Vector2(154.5, 39)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oyogi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ce5b3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qhe3w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aorxw"]
+atlas = ExtResource("15_mmk25")
+region = Rect2(0, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h5xi"]
+atlas = ExtResource("15_mmk25")
+region = Rect2(42, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y73lj"]
+atlas = ExtResource("15_mmk25")
+region = Rect2(84, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pa6nv"]
+atlas = ExtResource("15_mmk25")
+region = Rect2(126, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugfp8"]
+atlas = ExtResource("15_mmk25")
+region = Rect2(168, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17htk"]
+atlas = ExtResource("15_mmk25")
+region = Rect2(210, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdoci"]
+atlas = ExtResource("15_mmk25")
+region = Rect2(252, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cayvj"]
+atlas = ExtResource("15_mmk25")
+region = Rect2(294, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxdo1"]
+atlas = ExtResource("15_mmk25")
+region = Rect2(336, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buxje"]
+atlas = ExtResource("15_mmk25")
+region = Rect2(378, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nug74"]
+atlas = ExtResource("15_mmk25")
+region = Rect2(420, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_we8rl"]
+atlas = ExtResource("15_mmk25")
+region = Rect2(462, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdphf"]
+atlas = ExtResource("15_mmk25")
+region = Rect2(504, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_levla"]
+atlas = ExtResource("15_mmk25")
+region = Rect2(546, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmuvt"]
+atlas = ExtResource("15_mmk25")
+region = Rect2(588, 0, 42, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pmsj8"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aorxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8h5xi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y73lj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pa6nv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugfp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17htk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdoci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cayvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxdo1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buxje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nug74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_we8rl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdphf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_levla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmuvt")
+}],
+"loop": true,
+"name": &"load",
+"speed": 10.0
+}]
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_iwj0i")
+metadata/_edit_lock_ = true
+
+[node name="MainCamera" parent="." node_paths=PackedStringArray("follow_node") instance=ExtResource("2_caocf")]
+offset = Vector2(0, 0)
+anchor_mode = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 10.0
+decay = 1.0
+follow_node = NodePath("..")
+
+[node name="screenShake" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_nl82v")
+volume_db = 20.0
+pitch_scale = 0.5
+
+[node name="blipBuzzer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_nl82v")
+volume_db = 10.0
+
+[node name="blipHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_t82v0")
+volume_db = -5.0
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(104, 112)
+stream = ExtResource("4_rbfkr")
+volume_db = 7.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_wrmkq")
+
+[node name="Worldmap" type="Sprite2D" parent="."]
+texture_filter = 4
+position = Vector2(360.5, 363.505)
+scale = Vector2(0.52832, 0.529329)
+texture = ExtResource("1_4heg4")
+metadata/_edit_lock_ = true
+
+[node name="Border" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(361, 360.5)
+scale = Vector2(23.9375, 23.9688)
+texture = ExtResource("3_gmvwd")
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_y7d0f")
+mesh = SubResource("QuadMesh_rpuws")
+metadata/_edit_lock_ = true
+
+[node name="ScoreTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="HungerTimer" type="Timer" parent="."]
+wait_time = 40.0
+one_shot = true
+autostart = true
+
+[node name="DefenseTimer" type="Timer" parent="."]
+wait_time = 50.0
+one_shot = true
+autostart = true
+
+[node name="ManipulationTimer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="Score" type="Label" parent="."]
+texture_filter = 1
+offset_left = 358.0
+offset_top = 50.0
+offset_right = 502.0
+offset_bottom = 66.0
+scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(1, 0.882353, 0.686275, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.427451, 0.294118, 0.152941, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = -2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("5_nq3mo")
+text = "YEAR 0"
+
+[node name="Area2D" type="Area2D" parent="Score"]
+script = ExtResource("5_kku0w")
+target_node = NodePath("..")
+hover_duration = 0.01
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Score/Area2D"]
+position = Vector2(70.75, 3)
+shape = SubResource("RectangleShape2D_ni3vx")
+
+[node name="ClickerMechanics" type="Node2D" parent="."]
+position = Vector2(365, 367)
+metadata/_edit_lock_ = true
+
+[node name="Ration" type="Button" parent="ClickerMechanics"]
+offset_left = -93.0
+offset_top = 81.0
+offset_right = 99.0
+offset_bottom = 200.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oyogi")
+flat = true
+metadata/_edit_lock_ = true
+
+[node name="Military" type="Button" parent="ClickerMechanics"]
+offset_left = -254.0
+offset_top = -97.0
+offset_right = -108.0
+offset_bottom = 21.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ce5b3")
+flat = true
+
+[node name="Church" type="Button" parent="ClickerMechanics"]
+offset_left = 98.0
+offset_top = -105.0
+offset_right = 223.0
+offset_bottom = -53.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qhe3w")
+flat = true
+metadata/_edit_lock_ = true
+
+[node name="ChurchTimer" type="Timer" parent="ClickerMechanics"]
+wait_time = 3.0
+one_shot = true
+
+[node name="RationTimer" type="Timer" parent="ClickerMechanics"]
+wait_time = 2.0
+one_shot = true
+
+[node name="MilitaryTimer" type="Timer" parent="ClickerMechanics"]
+wait_time = 2.5
+one_shot = true
+
+[node name="ArmyHover" type="PointLight2D" parent="ClickerMechanics"]
+visible = false
+position = Vector2(-176, -27)
+scale = Vector2(7.25, 7.25)
+energy = 2.0
+texture = ExtResource("12_tpmup")
+
+[node name="MillHover" type="PointLight2D" parent="ClickerMechanics"]
+visible = false
+position = Vector2(-6.875, 149.875)
+scale = Vector2(7.44531, 7.44531)
+energy = 2.0
+texture = ExtResource("12_tpmup")
+
+[node name="ChurchHover" type="PointLight2D" parent="ClickerMechanics"]
+visible = false
+position = Vector2(158, -68)
+scale = Vector2(6.24219, 6.24219)
+energy = 2.0
+texture = ExtResource("12_tpmup")
+
+[node name="RationWait" type="AnimatedSprite2D" parent="ClickerMechanics"]
+visible = false
+texture_filter = 1
+position = Vector2(3, 194)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_pmsj8")
+animation = &"load"
+frame_progress = 0.467557
+
+[node name="ChurchWait" type="AnimatedSprite2D" parent="ClickerMechanics"]
+visible = false
+texture_filter = 1
+position = Vector2(160, -39)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_pmsj8")
+animation = &"load"
+frame_progress = 0.657904
+
+[node name="MilitaryWait" type="AnimatedSprite2D" parent="ClickerMechanics"]
+visible = false
+texture_filter = 1
+position = Vector2(-180, 33)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_pmsj8")
+animation = &"load"
+frame_progress = 0.357141
+
+[node name="SCORE" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+metadata/_edit_lock_ = true
+
+[node name="FOOD" type="TextureButton" parent="SCORE"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 16.0
+offset_top = 13.0
+offset_right = 48.0
+offset_bottom = 45.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("5_4p00u")
+
+[node name="FoodScore" type="Label" parent="SCORE/FOOD"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 5.66667
+offset_top = 22.3333
+offset_right = 37.6667
+offset_bottom = 38.3333
+scale = Vector2(0.66, 0.66)
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.984314, 0.854902, 0.654902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("5_nq3mo")
+text = "00
+"
+
+[node name="BREAD" type="Sprite2D" parent="SCORE/FOOD"]
+texture_filter = 1
+position = Vector2(15.6667, 15)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("11_1reka")
+
+[node name="ARMY" type="TextureButton" parent="SCORE"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 16.0
+offset_top = 124.0
+offset_right = 48.0
+offset_bottom = 156.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("5_4p00u")
+
+[node name="CursorSwordGold" type="Sprite2D" parent="SCORE/ARMY"]
+texture_filter = 1
+position = Vector2(15.6667, 17.6667)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_0rsas")
+
+[node name="ArmyScore" type="Label" parent="SCORE/ARMY"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = 21.6667
+offset_right = 38.0
+offset_bottom = 37.6667
+scale = Vector2(0.66, 0.66)
+theme_override_colors/font_color = Color(0.984314, 0.854902, 0.654902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("5_nq3mo")
+text = "00"
+
+[node name="RELIGION" type="TextureButton" parent="SCORE"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 117.0
+offset_top = 13.0
+offset_right = 149.0
+offset_bottom = 45.0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("5_4p00u")
+
+[node name="Heart" type="Sprite2D" parent="SCORE/RELIGION"]
+texture_filter = 1
+position = Vector2(16, 16.6667)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_1ak3r")
+
+[node name="ReligionScore" type="Label" parent="SCORE/RELIGION"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 5.66667
+offset_top = 22.3333
+offset_right = 37.6667
+offset_bottom = 38.3333
+scale = Vector2(0.66, 0.66)
+theme_override_colors/font_color = Color(1.2, 0.855, 0.655, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("5_nq3mo")
+text = "00"
+
+[node name="TimeOuts" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -5.0
+offset_right = 35.0
+offset_bottom = 40.0
+
+[node name="HungerBar" type="TextureProgressBar" parent="TimeOuts"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 103.0
+offset_top = 587.0
+offset_right = 135.0
+offset_bottom = 619.0
+scale = Vector2(4, 4)
+fill_mode = 5
+texture_under = ExtResource("18_67t1j")
+texture_over = ExtResource("19_y4578")
+texture_progress = ExtResource("21_dba0v")
+
+[node name="HungerSkull" type="Sprite2D" parent="TimeOuts/HungerBar"]
+visible = false
+texture_filter = 1
+position = Vector2(16, 15.5)
+scale = Vector2(0.704861, 0.704861)
+texture = ExtResource("12_6ir2s")
+
+[node name="FamineTimerLabel" type="Label" parent="TimeOuts/HungerBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 0.5
+offset_top = 14.25
+offset_right = 96.5
+offset_bottom = 30.25
+scale = Vector2(0.33, 0.33)
+theme_override_colors/font_color = Color(0.984314, 0.854902, 0.654902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("5_nq3mo")
+text = "FAMINE"
+
+[node name="DefenseBar" type="TextureProgressBar" parent="TimeOuts"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 303.0
+offset_top = 587.0
+offset_right = 335.0
+offset_bottom = 619.0
+scale = Vector2(4, 4)
+fill_mode = 5
+texture_under = ExtResource("18_67t1j")
+texture_over = ExtResource("19_y4578")
+texture_progress = ExtResource("21_dba0v")
+
+[node name="WarSkull" type="Sprite2D" parent="TimeOuts/DefenseBar"]
+visible = false
+texture_filter = 1
+position = Vector2(16.25, 15.5)
+scale = Vector2(0.704861, 0.704861)
+texture = ExtResource("12_6ir2s")
+
+[node name="AttackTimerLabel" type="Label" parent="TimeOuts/DefenseBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 8.49998
+offset_top = 14.25
+offset_right = 56.5
+offset_bottom = 30.25
+scale = Vector2(0.33, 0.33)
+theme_override_colors/font_color = Color(0.984314, 0.854902, 0.654902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("5_nq3mo")
+text = "WAR
+"
+
+[node name="ManipulationBar" type="TextureProgressBar" parent="TimeOuts"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 503.0
+offset_top = 587.0
+offset_right = 535.0
+offset_bottom = 619.0
+scale = Vector2(4, 4)
+fill_mode = 5
+stretch_margin_left = 10
+texture_under = ExtResource("18_67t1j")
+texture_over = ExtResource("19_y4578")
+texture_progress = ExtResource("21_dba0v")
+
+[node name="RevoltSkull" type="Sprite2D" parent="TimeOuts/ManipulationBar"]
+visible = false
+texture_filter = 1
+position = Vector2(16, 15.5)
+scale = Vector2(0.704861, 0.704861)
+texture = ExtResource("12_6ir2s")
+
+[node name="RevoltTimerLabel" type="Label" parent="TimeOuts/ManipulationBar"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 0.75
+offset_top = 14.25
+offset_right = 96.75
+offset_bottom = 30.25
+scale = Vector2(0.333, 0.333)
+theme_override_colors/font_color = Color(0.984314, 0.854902, 0.654902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("5_nq3mo")
+text = "REVOLT"
+
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="HungerTimer" to="." method="_on_hunger_timer_timeout"]
+[connection signal="timeout" from="DefenseTimer" to="." method="_on_defense_timer_timeout"]
+[connection signal="timeout" from="ManipulationTimer" to="." method="_on_manipulation_timer_timeout"]
+[connection signal="pressed" from="ClickerMechanics/Ration" to="." method="_on_ration_pressed"]
+[connection signal="pressed" from="ClickerMechanics/Military" to="." method="_on_military_pressed"]
+[connection signal="pressed" from="ClickerMechanics/Church" to="." method="_on_church_pressed"]
+[connection signal="timeout" from="ClickerMechanics/ChurchTimer" to="." method="_on_church_timer_timeout"]
+[connection signal="timeout" from="ClickerMechanics/RationTimer" to="." method="_on_ration_timer_timeout"]
+[connection signal="timeout" from="ClickerMechanics/MilitaryTimer" to="." method="_on_military_timer_timeout"]
+[connection signal="pressed" from="SCORE/FOOD" to="." method="_on_food_pressed"]
+[connection signal="pressed" from="SCORE/ARMY" to="." method="_on_army_pressed"]
+[connection signal="pressed" from="SCORE/RELIGION" to="." method="_on_religion_pressed"]

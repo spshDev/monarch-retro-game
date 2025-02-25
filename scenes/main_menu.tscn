@@ -1,0 +1,224 @@
+[gd_scene load_steps=20 format=3 uid="uid://ddtcw0dh3g17d"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_4v0ge"]
+[ext_resource type="AudioStream" uid="uid://cq6fbyuvo2x40" path="res://assets/SoundEffects/click.wav" id="2_7c7x7"]
+[ext_resource type="Texture2D" uid="uid://cwakihwec58eo" path="res://assets/Textures/parchmentAncient.png" id="2_37uhq"]
+[ext_resource type="AudioStream" uid="uid://cjfuh65ehi40c" path="res://assets/SoundEffects/blipHover.wav" id="2_g185t"]
+[ext_resource type="FontFile" uid="uid://dqctqmm7abhud" path="res://assets/FONTS/PressStart2P-Regular.ttf" id="3_ie4mi"]
+[ext_resource type="FontFile" uid="uid://b1v6bcaubwbsv" path="res://assets/FONTS/PixelifySans-VariableFont_wght.ttf" id="3_n8mf1"]
+[ext_resource type="Texture2D" uid="uid://76uhcuhwpm62" path="res://assets/border.png" id="3_ywu44"]
+[ext_resource type="Texture2D" uid="uid://dcqyuy1pfv6sb" path="res://assets/pixil-frame-0.png" id="7_ts6ll"]
+[ext_resource type="Texture2D" uid="uid://cbu4yrd0vreda" path="res://assets/Tiles/Large tiles/Thick outline/tile_0058.png" id="8_1d4tc"]
+[ext_resource type="Texture2D" uid="uid://t2n8dxjejd2k" path="res://assets/Tiles/Large tiles/Thick outline/tile_0057.png" id="9_kmrco"]
+[ext_resource type="Shader" path="res://shaders/CRT.gdshader" id="10_aasgb"]
+[ext_resource type="Texture2D" uid="uid://uivv7c5kf3fj" path="res://assets/Tiles/Large tiles/Thick outline/tile_0056.png" id="10_vn0p4"]
+[ext_resource type="Environment" uid="uid://dxd434xxnhox3" path="res://shaders/env.tres" id="11_lxdvm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p4gyl"]
+texture = ExtResource("2_37uhq")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r8uf4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gu1c6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pufls"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n6teq"]
+shader = ExtResource("10_aasgb")
+
+[sub_resource type="QuadMesh" id="QuadMesh_lpa0c"]
+size = Vector2(720, 720)
+center_offset = Vector3(360, 360, 0)
+
+[node name="Main Menu" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4v0ge")
+metadata/_edit_lock_ = true
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(104, 112)
+stream = ExtResource("2_7c7x7")
+volume_db = 6.0
+
+[node name="BlipHover" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(368, 472)
+stream = ExtResource("2_g185t")
+volume_db = 2.0
+
+[node name="Bg" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 16.0
+offset_right = 744.0
+offset_bottom = 760.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_p4gyl")
+
+[node name="Tile0019" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(359, 360.5)
+scale = Vector2(24.1875, 23.9688)
+texture = ExtResource("3_ywu44")
+
+[node name="UI" type="Control" parent="."]
+anchors_preset = 0
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = 16.0
+
+[node name="TITLE" type="Node2D" parent="UI"]
+texture_filter = 1
+position = Vector2(368, 264)
+
+[node name="Tile0057" type="Sprite2D" parent="UI/TITLE"]
+position = Vector2(-4.49999, 2.66669)
+scale = Vector2(13.2188, 4.33333)
+texture = ExtResource("9_kmrco")
+
+[node name="Tile0058" type="Sprite2D" parent="UI/TITLE"]
+position = Vector2(272, 8)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("8_1d4tc")
+
+[node name="Tile0056" type="Sprite2D" parent="UI/TITLE"]
+position = Vector2(-286, 6)
+scale = Vector2(4.375, 4.375)
+texture = ExtResource("10_vn0p4")
+
+[node name="Title" type="Label" parent="UI/TITLE"]
+offset_left = -175.0
+offset_top = -32.0
+offset_right = 169.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(1, 0.945098, 0.823529, 1)
+theme_override_colors/font_shadow_color = Color(0.482353, 0.203922, 0.180392, 1)
+theme_override_colors/font_outline_color = Color(0.556863, 0.247059, 0.219608, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("3_n8mf1")
+theme_override_font_sizes/font_size = 50
+text = "M  O  N  A  R  C  H "
+
+[node name="Buttons" type="Node2D" parent="UI"]
+position = Vector2(344, 400)
+
+[node name="Play" type="Button" parent="UI/Buttons"]
+offset_left = -64.0
+offset_top = -30.0
+offset_right = 99.0
+offset_bottom = 35.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_r8uf4")
+text = "
+"
+flat = true
+
+[node name="Pixil-frame-0" type="Sprite2D" parent="UI/Buttons/Play"]
+texture_filter = 1
+position = Vector2(80, 33)
+scale = Vector2(5.13281, 3.48437)
+texture = ExtResource("7_ts6ll")
+
+[node name="Label" type="Label" parent="UI/Buttons/Play"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 36.0
+offset_top = 22.0
+offset_right = 124.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.772549, 0.529412, 0.278431, 1)
+theme_override_colors/font_shadow_color = Color(0.639216, 0.439216, 0.227451, 1)
+theme_override_colors/font_outline_color = Color(0.427451, 0.294118, 0.152941, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_ie4mi")
+theme_override_font_sizes/font_size = 22
+text = "PLAY"
+
+[node name="Tutorial" type="Button" parent="UI/Buttons"]
+offset_left = -98.0
+offset_top = 52.0
+offset_right = 126.0
+offset_bottom = 140.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gu1c6")
+text = "
+"
+flat = true
+
+[node name="Pixil-frame-2" type="Sprite2D" parent="UI/Buttons/Tutorial"]
+texture_filter = 1
+position = Vector2(115, 48)
+scale = Vector2(7.1875, 4.21875)
+texture = ExtResource("7_ts6ll")
+
+[node name="Label2" type="Label" parent="UI/Buttons/Tutorial"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 38.0
+offset_top = 38.0
+offset_right = 198.0
+offset_bottom = 57.0
+theme_override_colors/font_color = Color(0.772549, 0.529412, 0.278431, 1)
+theme_override_colors/font_shadow_color = Color(0.639216, 0.439216, 0.227451, 1)
+theme_override_colors/font_outline_color = Color(0.427451, 0.294118, 0.152941, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_ie4mi")
+theme_override_font_sizes/font_size = 19
+text = "TUTORIAL"
+
+[node name="Quit" type="Button" parent="UI/Buttons"]
+offset_left = -64.0
+offset_top = 162.0
+offset_right = 98.0
+offset_bottom = 226.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pufls")
+text = "
+"
+flat = true
+
+[node name="Pixil-frame-1" type="Sprite2D" parent="UI/Buttons/Quit"]
+texture_filter = 1
+position = Vector2(81.125, 33.25)
+scale = Vector2(5.07031, 3.51563)
+texture = ExtResource("7_ts6ll")
+
+[node name="Label3" type="Label" parent="UI/Buttons/Quit"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 39.125
+offset_top = 21.25
+offset_right = 127.125
+offset_bottom = 44.25
+theme_override_colors/font_color = Color(0.772549, 0.529412, 0.278431, 1)
+theme_override_colors/font_shadow_color = Color(0.639216, 0.439216, 0.227451, 1)
+theme_override_colors/font_outline_color = Color(0.427451, 0.294118, 0.152941, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_ie4mi")
+theme_override_font_sizes/font_size = 22
+text = "QUIT"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_n6teq")
+mesh = SubResource("QuadMesh_lpa0c")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("11_lxdvm")
+
+[connection signal="pressed" from="UI/Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="UI/Buttons/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="UI/Buttons/Quit" to="." method="_on_quit_pressed"]

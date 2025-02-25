@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d07dm8rgukoob"]
+
+[ext_resource type="AudioStream" uid="uid://ckfqh43j5pqpu" path="res://assets/SoundEffects/retroBGM.mp3" id="1_hatpr"]
+
+[node name="BGM" type="AudioStreamPlayer"]
+stream = ExtResource("1_hatpr")
+volume_db = -5.0
+autoplay = true

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b4e2dsiq5vcbn"]
+
+[node name="military_wait" type="ProgressBar"]
+offset_right = 240.0
+offset_bottom = 27.0
